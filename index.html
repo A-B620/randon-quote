@@ -65,7 +65,7 @@ clip.addEventListener('click',function(){
     var author=document.querySelector('.name');
     var notifaction=document.querySelector(".noti");
 
-    navigator.clipboard.writeText(quotedata.textContent +` `+  author.textContent).then(function(){
+    navigator.clipboard.writeText(quotedata.textContent +` `+ author.textContent).then(function(){
         setTimeout(() => {
             setTimeout(() => {
             notifaction.style.display='none';   
