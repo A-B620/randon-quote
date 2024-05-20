@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Qoute</title>
-     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
       .noti{display: none;}
@@ -13,7 +13,7 @@
 </head>
 <body class="flex flex-col font-['Outfit'] bg-[#111729] items-center justify-center h-screen ">
      
-     <span class="noti  absolute border-[1px] border-[#6466E9] p-1 px-2 top-2 text-white text-[10px] rounded-[20px] bg-inherit">noti</span>
+     <span class="noti  absolute border-[1px] border-[#6466E9] p-1 px-2 top-9 text-white text-[10px] rounded-[20px] bg-inherit">noti</span>
 
     <div class="flex flex-col items-center bg-[url('./assets/bg.svg')]  bg-[#20293A]  bg-contain bg-bottom bg-no-repeat  h-[150px] w-[345px] rounded-xl sm:w-[450px] sm:h-[205px]">
         <h1 class="mt-[20px] text-white text-[16px] name">name</h1>
@@ -27,7 +27,7 @@
 
     </div>
     <div class="flex flex-row m-[10px]">
-        <button class="border-[1px] rounded-l-xl  p-1 px-2 border-[#4A5567] rand "><img src=" ./assets/Regroup.svg " alt="" class=""></button>
+        <button class="border-[1px] rounded-l-xl  p-1 px-2 border-[#4A5567] rand "><img src=" /assets/Regroup.svg " alt="" class=""></button>
         <button class="border-[1px] rounded-r-xl  p-1 px-2 border-[#4A5567] clip"><img src="./assets/link.svg" alt=""></button>
     </div>
     
@@ -62,9 +62,9 @@ rand.addEventListener('click',function(){
 
 clip.addEventListener('click',function(){
     var quotedata=document.querySelector('.data');
-    var notifaction=document.querySelector(".noti");
     var author=document.querySelector('.name');
-    
+    var notifaction=document.querySelector(".noti");
+
     navigator.clipboard.writeText(quotedata.textContent +` `+  author.textContent).then(function(){
         setTimeout(() => {
             setTimeout(() => {
