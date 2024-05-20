@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Qoute</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+      .noti{display: none;}
+    </style>
+    
+</head>
+<body class="flex flex-col font-['Outfit'] bg-[#111729] items-center justify-center h-screen ">
+     
+     <span class="noti  absolute border-[1px] border-[#6466E9] p-1 px-2 top-2 text-white text-[10px] rounded-[20px] bg-inherit">noti</span>
+
+    <div class="flex flex-col items-center bg-[url('./assets/bg.svg')]  bg-[#20293A]  bg-contain bg-bottom bg-no-repeat  h-[150px] w-[345px] rounded-xl sm:w-[450px] sm:h-[205px]">
+        <h1 class="mt-[20px] text-white text-[16px] name">name</h1>
+
+        <div class="space-x-2 m-[5px]" >
+            <button class="rounded-full ring-1 ring-[#6466E9] text-[#6466E9] p-[1px] px-2 text-[10px]">Famous Qoutes</button>
+            <button class="rounded-full ring-1 ring-[#6466E9] text-[#6466E9] p-[1px] px-2 text-[10px]"> Inspirational</button>
+        </div>
+
+        <p class="text-[16px] m-[5px] mb-[20px] mx-[10px] text-[#97A3B6]  overflow-auto data text-center   sm:text-[24px] sm:mx-[20px] sm:m-[20px]">quote</p>
+
+    </div>
+    <div class="flex flex-row m-[10px]">
+        <button class="border-[1px] rounded-l-xl  p-1 px-2 border-[#4A5567] rand "><img src=" /assets/Regroup.svg " alt="" class=""></button>
+        <button class="border-[1px] rounded-r-xl  p-1 px-2 border-[#4A5567] clip"><img src="./assets/link.svg" alt=""></button>
+    </div>
+    
+</body>
+<script>
+    var rand=document.querySelector('.rand');
+    var clip=document.querySelector(".clip");
+
+    var quote=()=>{
+        var quotedata=document.querySelector('.data');
+        var author=document.querySelector('.name');
+        fetch('https://api.quotable.io/random')
+        .then(response => response.json())
+        .then(data => {
+    console.log(`${data.content} —${data.author}`)
+    quotedata.textContent=`"` + data.content +`"`;
+    author.textContent=data.author;
+  })
+  .catch(error => {
+    console.log(error)
+  });   
+
+    };
+
+quote();
+
+rand.addEventListener('click',function(){
+    console.log("a random quote generated");
+    quote();
+
+});
+
+clip.addEventListener('click',function(){
+    var quotedata=document.querySelector('.data');
+    var notifaction=document.querySelector(".noti");
+    navigator.clipboard.writeText(quotedata.textContent).then(function(){
+        setTimeout(() => {
+            setTimeout(() => {
+            notifaction.style.display='none';   
+            },2000);
+            notifaction.textContent='Copied to Clipboard';
+            notifaction.style.display='flex';
+            console.log("added to clipboard");
+        }, 100);
+       
+
+    }).catch(function(error){
+        setTimeout(() => {
+            notifaction.textContent='Failed to copy to Clipboard' + error;
+            notifaction.style.display=flex;
+        }, 5000);
+
+    })
+    
+})
+
+
+
+</script>
+</html>
